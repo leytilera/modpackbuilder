@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '0.10.0'
+    id 'maven-publish'
+    
+}
+
+group 'anvil'
+version '2.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+    compile gradleApi()
+    implementation 'com.github.TeamAnvil:addonscript-lib:3c7e4685bb'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = []
+        }
+        groovy {
+            srcDirs = ['src/main/java' ]
+        }
+    }
+}
+
+
+pluginBundle {
+    website = 'https://github.com/mpztilera/modpackbuilder'
+    vcsUrl = 'https://github.com/mpztilera/modpackbuilder'
+    tags = ['minecraft']
+}
+
+gradlePlugin {
+    plugins {
+        modpackbuilder {
+            id = 'anvil.modpackbuilder'
+            displayName = 'Modpack Builder'
+            description = 'A plugin to build Minecraft modpacks from Twitch exports'
+            implementationClass = 'anvil.modpackbuilder.BuilderPlugin'
+        }
+    }
+}
+
