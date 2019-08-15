@@ -7,7 +7,7 @@ class TaskCompileTwitch extends Copy {
 
     TaskCompileTwitch() {
         setGroup("modpackbuilder")
-        dependsOn("deleteTwitch", "copyManifest", "copyOverrides", "downloadMods", "createAddonScript")
+        dependsOn("deleteTwitch", "copyManifest", "copyOverrides", "downloadMods", "deleteCache", "createAddonScript")
         into "build/mc/twitch"
 
         into(".") {

@@ -10,7 +10,7 @@ class TaskDownloadMods extends ModpackBuilderTask {
 
     TaskDownloadMods() {
         super()
-        dependsOn("copyModpackJSON", "deleteCache")
+        dependsOn("copyModpackJSON")
     }
 
     @TaskAction
